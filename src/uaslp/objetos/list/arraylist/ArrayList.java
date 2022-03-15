@@ -1,6 +1,9 @@
 package uaslp.objetos.list.arraylist;
 
-public class ArrayList {
+import uaslp.objetos.list.Iterator;
+import uaslp.objetos.list.List;
+
+public class ArrayList implements List {
 
     private static final int DEFAULT_SIZE = 2;
     private String[] array;
@@ -14,6 +17,7 @@ public class ArrayList {
         array = new String[DEFAULT_SIZE];
     }
 
+    @Override
     public void addAtTail(String data) {
 
         if (size == array.length) {
@@ -22,7 +26,7 @@ public class ArrayList {
         array[size] = data;
         size++;
     }
-
+    @Override
     public void addAtFront(String data) {
 
         if (size == array.length) {
@@ -34,7 +38,7 @@ public class ArrayList {
         array[0] = data;
         size++;
     }
-
+    @Override
     public void remove(int index) {
 
         if (index < 0 || index >= size) {
@@ -46,28 +50,30 @@ public class ArrayList {
         array[size - 1] = null;
         size--;
     }
-
+    @Override
     public void removeAll() {
         for (int i = 0; i < size; i++) {
             array[i] = null;
         }
         size = 0;
     }
-
+    @Override
     public String getAt(int index) {
         return index >= 0 && index < size ? array[index] : null;
     }
-
+    @Override
     public void setAt(int index, String data) {
         if (index >= 0 && index < size) {
             array[index] = data;
         }
     }
 
-    public ArrayListIterator getIterator() {
+    @Override
+    public Iterator getIterator() {
         return new ArrayListIterator(this);
     }
 
+    @Override
     public int getSize() {
         return size;
     }
