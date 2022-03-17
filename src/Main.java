@@ -1,26 +1,15 @@
 import uaslp.objetos.list.Iterator;
 import uaslp.objetos.list.List;
-import uaslp.objetos.list.linkedlist.LinkedList;
-import uaslp.objetos.list.linkedlist.LinkedListIterator;
 import uaslp.objetos.list.arraylist.ArrayList;
-import uaslp.objetos.list.arraylist.ArrayListIterator;
+import uaslp.objetos.list.linkedlist.LinkedList;
 
 public class Main {
 
     public static void main(String[] args) {
-        /*
-        List team1 = new ArrayList();
-        List team2 = new ArrayList();
-        List team3 = new ArrayList();
-
-        List team1 = new LinkedList();
-        List team2 = new LinkedList();
-        List team3 = new LinkedList();
-        */
-        //tarea4(new LinkedList(),new LinkedList(),new LinkedList());
-        tarea4(new ArrayList(),new ArrayList(), new ArrayList());
+        //tarea4(new LinkedList<>(),new LinkedList<>(),new LinkedList<>());
+        tarea4(new ArrayList<>(),new ArrayList<>(), new ArrayList<>());
     }
-    public static void tarea4(List team1, List team2, List team3){
+    public static void tarea4(List<String> team1, List<String> team2, List<String> team3){
         team1.addAtTail("Jesús");
         team1.addAtTail("Salomón");
         team1.addAtTail("Yael");
@@ -30,7 +19,7 @@ public class Main {
         team2.addAtFront("Diego");
         team3.addAtFront("Imelda");
 
-        Iterator iterator;
+        Iterator<String> iterator;
         //LinkedListIterator iterator;
         //ArrayListIterator iterator;
         iterator = team1.getIterator();

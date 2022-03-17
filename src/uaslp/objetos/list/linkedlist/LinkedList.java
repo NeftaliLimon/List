@@ -1,15 +1,14 @@
 package uaslp.objetos.list.linkedlist;
-
 import uaslp.objetos.list.List;
 
-public class LinkedList implements List {
-    private Node head;
-    private Node tail;
+public class LinkedList <T> implements List <T> {
+    private Node<T> head;
+    private Node<T> tail;
     private int size;
 
     @Override
-    public void addAtTail(String data) {
-        Node node = new Node(data);
+    public void addAtTail(T data) {
+        Node<T> node = new Node<>(data);
 
         if (size == 0) {
             head = node;
@@ -23,8 +22,8 @@ public class LinkedList implements List {
     }
 
     @Override
-    public void addAtFront(String data) {
-        Node node = new Node(data);
+    public void addAtFront(T data) {
+        Node<T> node = new Node<>(data);
 
         if (size == 0) {
             tail = node;
@@ -39,7 +38,7 @@ public class LinkedList implements List {
 
     @Override
     public void remove(int index) {
-        Node node = findNode(index);
+        Node<T> node = findNode(index);
 
         if (node == null) {
             return;
@@ -73,8 +72,8 @@ public class LinkedList implements List {
     }
 
     @Override
-    public void setAt(int index, String data) {
-        Node node = findNode(index);
+    public void setAt(int index, T data) {
+        Node<T> node = findNode(index);
 
         if (node != null) {
             node.data = data;
@@ -82,14 +81,14 @@ public class LinkedList implements List {
     }
 
     @Override
-    public String getAt(int index) {
-        Node node = findNode(index);
+    public T getAt(int index) {
+        Node<T> node = findNode(index);
 
         return node == null ? null : node.data;
     }
 
     @Override
-    public LinkedListIterator getIterator() {
+    public LinkedListIterator<T> getIterator() {
         return new LinkedListIterator(head);
     }
 
@@ -98,7 +97,7 @@ public class LinkedList implements List {
         return size;
     }
 
-    private Node findNode(int index) {
+    private Node<T> findNode(int index) {
 
         if (index < 0 || index >= size) {
             return null;
