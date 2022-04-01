@@ -2,14 +2,33 @@ import uaslp.objetos.list.Iterator;
 import uaslp.objetos.list.List;
 import uaslp.objetos.list.arraylist.ArrayList;
 import uaslp.objetos.list.linkedlist.LinkedList;
+import uaslp.objetos.list.exception.NotNullValuesAllowedException;
+import uaslp.objetos.list.exception.NotValidIndexException;
 
 public class Main {
 
     public static void main(String[] args) {
+
+        try {
         //tarea4(new LinkedList<>(),new LinkedList<>(),new LinkedList<>());
         tarea4(new ArrayList<>(),new ArrayList<>(), new ArrayList<>());
+        }catch (NotValidIndexException e){
+            System.out.println("Ocurrió un error: " + e.getMessage());
+            e.printStackTrace();
+        }catch (NotNullValuesAllowedException e){
+            System.out.println(e.getMessage());
+        }
+/*
+        try {
+            tarea4(new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
+        }catch (NotValidIndexException e){
+            System.out.println("Ocurrió un error: " + e.getMessage());
+        }catch (NotNullValuesAllowedException e){
+            System.out.println(e.getMessage());
+        }
+*/
     }
-    public static void tarea4(List<String> team1, List<String> team2, List<String> team3){
+    public static void tarea4(List<String> team1, List<String> team2, List<String> team3)throws NotValidIndexException, NotNullValuesAllowedException{
         team1.addAtTail("Jesús");
         team1.addAtTail("Salomón");
         team1.addAtTail("Yael");

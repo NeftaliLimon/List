@@ -1,5 +1,8 @@
 package uaslp.objetos.list.linkedlist;
+
 import uaslp.objetos.list.List;
+import uaslp.objetos.list.exception.NotValidIndexException;
+import uaslp.objetos.list.exception.NotNullValuesAllowedException;
 
 public class LinkedList <T> implements List <T> {
     private Node<T> head;
@@ -7,7 +10,11 @@ public class LinkedList <T> implements List <T> {
     private int size;
 
     @Override
-    public void addAtTail(T data) {
+    public void addAtTail(T data) throws NotNullValuesAllowedException {
+        if(data == null){
+            throw new NotNullValuesAllowedException();
+        }
+
         Node<T> node = new Node<>(data);
 
         if (size == 0) {
@@ -22,7 +29,11 @@ public class LinkedList <T> implements List <T> {
     }
 
     @Override
-    public void addAtFront(T data) {
+    public void addAtFront(T data) throws NotNullValuesAllowedException {
+        if(data == null){
+            throw new NotNullValuesAllowedException();
+        }
+
         Node<T> node = new Node<>(data);
 
         if (size == 0) {
@@ -37,7 +48,7 @@ public class LinkedList <T> implements List <T> {
     }
 
     @Override
-    public void remove(int index) {
+    public void remove(int index) throws NotValidIndexException {
         Node<T> node = findNode(index);
 
         if (node == null) {
@@ -72,7 +83,11 @@ public class LinkedList <T> implements List <T> {
     }
 
     @Override
-    public void setAt(int index, T data) {
+    public void setAt(int index, T data) throws NotValidIndexException, NotNullValuesAllowedException {
+        if(data == null){
+            throw new NotNullValuesAllowedException();
+        }
+
         Node<T> node = findNode(index);
 
         if (node != null) {
@@ -81,7 +96,7 @@ public class LinkedList <T> implements List <T> {
     }
 
     @Override
-    public T getAt(int index) {
+    public T getAt(int index)throws NotValidIndexException {
         Node<T> node = findNode(index);
 
         return node == null ? null : node.data;
@@ -89,7 +104,7 @@ public class LinkedList <T> implements List <T> {
 
     @Override
     public LinkedListIterator<T> getIterator() {
-        return new LinkedListIterator(head);
+        return new LinkedListIterator<>(head);
     }
 
     @Override
@@ -97,13 +112,13 @@ public class LinkedList <T> implements List <T> {
         return size;
     }
 
-    private Node<T> findNode(int index) {
+    private Node<T> findNode(int index) throws NotValidIndexException{
 
-        if (index < 0 || index >= size) {
-            return null;
+        if(index < 0 || index >= size){
+            throw new NotValidIndexException(index);
         }
 
-        Node node = head;
+        Node<T> node = head;
         int currentIndex = 0;
 
         while (currentIndex != index) {
