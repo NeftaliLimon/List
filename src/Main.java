@@ -9,6 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+        System.out.println("Arraylist");
         try {
         //tarea4(new LinkedList<>(),new LinkedList<>(),new LinkedList<>());
         tarea4(new ArrayList<>(),new ArrayList<>(), new ArrayList<>());
@@ -18,17 +19,21 @@ public class Main {
         }catch (NotNullValuesAllowedException e){
             System.out.println(e.getMessage());
         }
-/*
+
+        System.out.println();
+        System.out.println("LinkedList");
         try {
             tarea4(new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
         }catch (NotValidIndexException e){
             System.out.println("Ocurrió un error: " + e.getMessage());
         }catch (NotNullValuesAllowedException e){
             System.out.println(e.getMessage());
-        }
-*/
+       }
+
     }
     public static void tarea4(List<String> team1, List<String> team2, List<String> team3)throws NotValidIndexException, NotNullValuesAllowedException{
+        //team1.remove(4);
+        team1.addAtTail(null);
         team1.addAtTail("Jesús");
         team1.addAtTail("Salomón");
         team1.addAtTail("Yael");

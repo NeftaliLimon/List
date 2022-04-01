@@ -61,6 +61,7 @@ public class ArrayList<T> implements List<T> {
     public T getAt(int index) {
         return index >= 0 && index < size ? array[index] : null;
     }
+
     @Override
     public void setAt(int index, T data) {
         if (index >= 0 && index < size) {
